@@ -1,0 +1,25 @@
+name: Test Project
+on: push
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+     # Your job runs on servers on machines owned by github.  
+     # They don't run inside of your repo.
+     # The runner that we have defined thus does not have your code automatically
+     # If you wanna have code that installs dependencies and tests your code,
+     # You must first get your code on to ubuntu latest server
+      - name: Get code
+      # run keyword is for running an action
+      # uses keyword is for a Actions - Always choose a version to run.
+        uses: action/checkout@v3
+        # We can add with to configure further
+      - name: Install Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: Install dependencies
+        run: npm ci
+      - name: Run tests
+        run: npm test
+                       

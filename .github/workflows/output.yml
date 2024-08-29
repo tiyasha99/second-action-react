@@ -1,0 +1,12 @@
+name: Output information
+on: workflow_dispatch
+jobs:
+    info:
+        runs-on: ubuntu-latest
+        # In steps we will output some meta information that was automatically passed 
+        # into the job. This is called context. GHA has information about triggers,
+        # runners and so on that can be accessed inside steps
+        
+        steps:
+            - name: Output GitHub Context
+              run: echo "${{ toJson(github) }}" #an expression, to display meta data

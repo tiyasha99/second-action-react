@@ -24,6 +24,7 @@ jobs:
         run: npm test
 
   deploy:
+    needs: test # This means that the deploy job needs the test job to finish before it starts
     runs-on: ubuntu-latest
     steps:
      - name: Get code
